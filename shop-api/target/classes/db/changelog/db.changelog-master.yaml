@@ -1,0 +1,282 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-shop-schema
+      author: codex
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+        - createTable:
+            tableName: customer_profiles
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: phone
+                  type: VARCHAR(30)
+              - column:
+                  name: address
+                  type: VARCHAR(200)
+
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(150)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: profile_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseTableName: customers
+            baseColumnNames: profile_id
+            referencedTableName: customer_profiles
+            referencedColumnNames: id
+            constraintName: fk_customers_profiles
+        - addUniqueConstraint:
+            tableName: customers
+            columnNames: profile_id
+            constraintName: uq_customers_profile_id
+
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: DECIMAL(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: products
+            baseColumnNames: category_id
+            referencedTableName: categories
+            referencedColumnNames: id
+            constraintName: fk_products_categories
+
+        - createTable:
+            tableName: tags
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: customer_id
+            referencedTableName: customers
+            referencedColumnNames: id
+            constraintName: fk_orders_customers
+
+        - createTable:
+            tableName: order_items
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: INT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: order_items
+            baseColumnNames: order_id
+            referencedTableName: orders
+            referencedColumnNames: id
+            constraintName: fk_order_items_orders
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: order_items
+            baseColumnNames: product_id
+            referencedTableName: products
+            referencedColumnNames: id
+            constraintName: fk_order_items_products
+
+        - createTable:
+            tableName: product_tags
+            columns:
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tag_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: product_tags
+            columnNames: product_id, tag_id
+            constraintName: pk_product_tags
+        - addForeignKeyConstraint:
+            baseTableName: product_tags
+            baseColumnNames: product_id
+            referencedTableName: products
+            referencedColumnNames: id
+            constraintName: fk_product_tags_products
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: product_tags
+            baseColumnNames: tag_id
+            referencedTableName: tags
+            referencedColumnNames: id
+            constraintName: fk_product_tags_tags
+
+  - changeSet:
+      id: 002-seed-shop-data
+      author: codex
+      changes:
+        - loadData:
+            tableName: categories
+            file: seed/categories.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: name, type: STRING }
+        - loadData:
+            tableName: customer_profiles
+            file: seed/customer_profiles.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: phone, type: STRING }
+              - column: { name: address, type: STRING }
+        - loadData:
+            tableName: customers
+            file: seed/customers.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: name, type: STRING }
+              - column: { name: email, type: STRING }
+              - column: { name: profile_id, type: NUMERIC }
+        - loadData:
+            tableName: products
+            file: seed/products.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: name, type: STRING }
+              - column: { name: price, type: NUMERIC }
+              - column: { name: category_id, type: NUMERIC }
+        - loadData:
+            tableName: tags
+            file: seed/tags.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: name, type: STRING }
+        - loadData:
+            tableName: orders
+            file: seed/orders.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: customer_id, type: NUMERIC }
+        - loadData:
+            tableName: order_items
+            file: seed/order_items.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: id, type: NUMERIC }
+              - column: { name: order_id, type: NUMERIC }
+              - column: { name: product_id, type: NUMERIC }
+              - column: { name: quantity, type: NUMERIC }
+        - loadData:
+            tableName: product_tags
+            file: seed/product_tags.csv
+            relativeToChangelogFile: true
+            columns:
+              - column: { name: product_id, type: NUMERIC }
+              - column: { name: tag_id, type: NUMERIC }

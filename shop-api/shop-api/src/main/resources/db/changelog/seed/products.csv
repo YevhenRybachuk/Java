@@ -1,0 +1,101 @@
+id,name,price,category_id
+1,Laptop Pro 14,45999.00,1
+2,Wireless Mouse,799.00,1
+3,Mechanical Keyboard,2499.00,1
+4,USB-C Hub,1299.00,1
+5,Noise Cancelling Headphones,5999.00,1
+6,Cotton T-Shirt,499.00,2
+7,Denim Jeans,1499.00,2
+8,Winter Jacket,4299.00,2
+9,Hoodie Classic,1199.00,2
+10,Linen Shirt,899.00,2
+11,Java Fundamentals Book,850.00,3
+12,Spring Boot Guide,1100.00,3
+13,Clean Code Edition,1250.00,3
+14,Database Design Handbook,980.00,3
+15,Algorithms Workbook,760.00,3
+16,Desk Lamp,650.00,4
+17,Wall Clock,420.00,4
+18,Storage Box Set,530.00,4
+19,Bedside Table,2200.00,4
+20,Cotton Blanket,1350.00,4
+21,Chef Knife,1450.00,5
+22,Cutting Board,390.00,5
+23,Frying Pan,980.00,5
+24,Electric Kettle,1290.00,5
+25,Coffee Grinder,1890.00,5
+26,Yoga Mat,760.00,6
+27,Running Shorts,690.00,6
+28,Dumbbell Pair 10kg,2100.00,6
+29,Football Ball,840.00,6
+30,Fitness Tracker,2590.00,6
+31,Building Blocks Set,950.00,7
+32,Remote Control Car,1690.00,7
+33,Board Game Strategy,1150.00,7
+34,Plush Bear,540.00,7
+35,Kids Puzzle 500,320.00,7
+36,Face Cream,690.00,8
+37,Shampoo Repair,240.00,8
+38,Perfume Urban,1750.00,8
+39,Makeup Brush Set,820.00,8
+40,Hand Lotion,180.00,8
+41,Vitamins Complex,360.00,9
+42,Digital Thermometer,490.00,9
+43,First Aid Kit,780.00,9
+44,Massage Roller,530.00,9
+45,Blood Pressure Monitor,1690.00,9
+46,Car Phone Holder,320.00,10
+47,Engine Oil 5W30,1450.00,10
+48,Car Vacuum Cleaner,1250.00,10
+49,Windshield Wipers,410.00,10
+50,Jump Starter,2950.00,10
+51,Garden Hose 20m,890.00,11
+52,Pruning Shears,470.00,11
+53,Plant Pot Ceramic,360.00,11
+54,Outdoor Solar Light,590.00,11
+55,Lawn Sprinkler,720.00,11
+56,Notebook A5,85.00,12
+57,Gel Pen Pack,140.00,12
+58,Office Chair,4590.00,12
+59,Document Organizer,310.00,12
+60,Whiteboard Marker Set,220.00,12
+61,Dog Food 10kg,1390.00,13
+62,Cat Litter 5kg,420.00,13
+63,Pet Bed Medium,1150.00,13
+64,Dog Leash,290.00,13
+65,Cat Scratcher,870.00,13
+66,Acoustic Guitar,5400.00,14
+67,Digital Piano Stand,2300.00,14
+68,Microphone USB,1890.00,14
+69,Guitar Strings,260.00,14
+70,Music Stand,640.00,14
+71,Game Controller,1890.00,15
+72,Gaming Mouse Pad,450.00,15
+73,Strategy Game PC,1290.00,15
+74,Console Charging Dock,990.00,15
+75,VR Headset Lite,8990.00,15
+76,Running Shoes,2890.00,16
+77,Leather Boots,3690.00,16
+78,Summer Sandals,990.00,16
+79,Sneakers Urban,2490.00,16
+80,Hiking Shoes,3290.00,16
+81,Leather Wallet,850.00,17
+82,Backpack 25L,1790.00,17
+83,Sunglasses Classic,1150.00,17
+84,Travel Umbrella,490.00,17
+85,Watch Strap,380.00,17
+86,Cordless Drill,2990.00,18
+87,Screwdriver Set,520.00,18
+88,Toolbox Compact,890.00,18
+89,Measuring Tape,160.00,18
+90,Work Gloves,240.00,18
+91,Baby Stroller,7600.00,19
+92,Baby Bottle Set,430.00,19
+93,Diaper Pack,620.00,19
+94,Baby Blanket,580.00,19
+95,Kids High Chair,2450.00,19
+96,Olive Oil 1L,420.00,20
+97,Arabica Coffee 1kg,690.00,20
+98,Green Tea Pack,230.00,20
+99,Dark Chocolate,120.00,20
+100,Granola Mix,180.00,20
